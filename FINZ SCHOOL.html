@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FINZ SCHOOL</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#f4f7fc;
+}
+
+/* LOGIN */
+
+#loginPage{
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.6),
+  rgba(0,0,0,0.6)),
+  url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1400&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+}
+
+.login-box{
+  width:350px;
+  background:white;
+  padding:35px;
+  border-radius:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.login-box h2{
+  text-align:center;
+  margin-bottom:25px;
+  color:#0d47a1;
+}
+
+.login-box input,
+.login-box select{
+  width:100%;
+  padding:14px;
+  margin:10px 0;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+
+.login-box button{
+  width:100%;
+  padding:14px;
+  background:#0d47a1;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.info{
+  margin-top:20px;
+  background:#e3f2fd;
+  padding:15px;
+  border-radius:10px;
+  line-height:1.8;
+}
+
+/* WEBSITE */
+
+#website{
+  display:none;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:250px;
+  height:100vh;
+  background:#0d47a1;
+  position:fixed;
+  left:0;
+  top:0;
+  padding-top:20px;
+  overflow:auto;
+}
+
+.sidebar h1{
+  color:white;
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.sidebar button{
+  width:90%;
+  margin:10px auto;
+  display:block;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:white;
+  color:#0d47a1;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.sidebar button:hover{
+  background:#ff9800;
+  color:white;
+}
+
+/* CONTENT */
+
+.main-content{
+  margin-left:250px;
+  padding:30px;
+}
+
+/* PAGE */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.title{
+  font-size:40px;
+  color:#0d47a1;
+  margin-bottom:20px;
+  text-align:center;
+}
+
+.text{
+  text-align:center;
+  font-size:20px;
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+/* IMAGE */
+
+.banner{
+  width:100%;
+  height:400px;
+  object-fit:cover;
+  border-radius:20px;
+  margin-bottom:30px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* CARD */
+
+.card-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:20px;
+  text-align:center;
+}
+
+.card-content h3{
+  color:#0d47a1;
+  margin-bottom:10px;
+}
+
+/* NEXT BUTTON */
+
+.next-btn{
+  margin-top:40px;
+  text-align:center;
+}
+
+.next-btn button{
+  padding:14px 25px;
+  background:#ff9800;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.next-btn button:hover{
+  background:#e68900;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:50px;
+  background:#0d47a1;
+  color:white;
+  text-align:center;
+  padding:20px;
+  border-radius:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .sidebar{
+    width:100%;
+    height:auto;
+    position:relative;
+    padding-bottom:20px;
+  }
+
+  .main-content{
+    margin-left:0;
+  }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+
+<div id="loginPage">
+
+  <div class="login-box">
+
+    <h2>Login FINZ SCHOOL</h2>
+
+    <select id="role">
+      <option value="user">User</option>
+      <option value="admin">Admin</option>
+    </select>
+
+    <input type="text"
+    placeholder="Masukkan Username">
+
+    <input type="password"
+    id="password"
+    placeholder="Masukkan Password">
+
+    <button onclick="login()">
+      Login
+    </button>
+
+    <div class="info">
+
+      <b>Password:</b><br><br>
+
+      User : <b>user123</b><br>
+      Admin : <b>admin123</b>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- WEBSITE -->
+
+<div id="website">
+
+  <!-- SIDEBAR -->
+
+  <div class="sidebar">
+
+    <h1>FINZ SCHOOL</h1>
+
+    <button onclick="showPage(0)">
+      Profil Sekolah
+    </button>
+
+    <button onclick="showPage(1)">
+      Visi & Misi
+    </button>
+
+    <button onclick="showPage(2)">
+      Jurusan
+    </button>
+
+    <button onclick="showPage(3)">
+      Ekstrakurikuler
+    </button>
+
+    <button onclick="showPage(4)">
+      Prestasi
+    </button>
+
+    <button onclick="logout()">
+      Logout
+    </button>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+
+  <div class="main-content">
+
+    <!-- PAGE 1 -->
+
+    <div class="page active">
+
+      <h2 class="title">
+        Profil Sekolah
+      </h2>
+
+      <img class="banner"
+      src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop"
+      alt="Foto Sekolah">
+
+      <p class="text">
+        FINZ SCHOOL adalah sekolah modern berbasis teknologi
+        yang memiliki fasilitas lengkap dan guru profesional.
+      </p>
+
+      <div class="next-btn">
+        <button onclick="nextPage()">
+          Selanjutnya ▶
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PAGE 2 -->
+
+    <div class="page">
+
+      <h2 class="title">
+        Visi & Misi
+      </h2>
+
+      <img class="banner"
+      src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop"
+      alt="Visi Misi">
+
+      <div class="card-container">
+
+        <div class="card">
+
+          <div class="card-content">
+
+            <h3>Visi</h3>
+
+            <p>
+              Menjadi sekolah unggulan yang menghasilkan
+              siswa kreatif, disiplin, dan berprestasi.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-content">
+
+            <h3>Misi</h3>
+
+            <p>
+              Memberikan pendidikan berkualitas
+              dan meningkatkan kemampuan teknologi siswa.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="next-btn">
+        <button onclick="nextPage()">
+          Selanjutnya ▶
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PAGE 3 -->
+
+    <div class="page">
+
+      <h2 class="title">
+        Jurusan
+      </h2>
+
+      <img class="banner"
+      src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop"
+      alt="Jurusan">
+
+      <div class="card-container">
+
+        <div class="card">
+          <div class="card-content">
+            <h3>TKJ</h3>
+            <p>Teknik Komputer dan Jaringan</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>AKUTANSI</h3>
+            <p>Akuntansi dan Keuangan</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>RPL</h3>
+            <p>Rekayasa Perangkat Lunak</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-content">
+            <h3>ANIMASI</h3>
+            <p>Desain Animasi Digital</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="next-btn">
+        <button onclick="nextPage()">
+          Selanjutnya ▶
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PAGE 4 -->
+
+    <div class="page">
+
+      <h2 class="title">
+        Ekstrakurikuler
+      </h2>
+
+      <div class="card-container">
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop"
+          alt="Robotik">
+          <div class="card-content">
+            <h3>Robotik</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop"
+          alt="Marching Band">
+          <div class="card-content">
+            <h3>Marching Band</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src=""
+          alt="Tilawah">
+          <div class="card-content">
+            <h3>Tilawah</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?q=80&w=1200&auto=format&fit=crop"
+          alt="Voli">
+          <div class="card-content">
+            <h3>Voli</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=1200&auto=format&fit=crop"
+          alt="Basket">
+          <div class="card-content">
+            <h3>Basket</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src=""
+          alt="Pramuka">
+          <div class="card-content">
+            <h3>Pramuka</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src=""
+          alt="Paskibra">
+          <div class="card-content">
+            <h3>Paskibra</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=1200&auto=format&fit=crop"
+          alt="Renang">
+          <div class="card-content">
+            <h3>Renang</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="next-btn">
+        <button onclick="nextPage()">
+          Selanjutnya ▶
+        </button>
+      </div>
+
+    </div>
+
+    <!-- PAGE 5 -->
+
+    <div class="page">
+
+      <h2 class="title">
+        Prestasi Sekolah
+      </h2>
+
+      <div class="card-container">
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?q=80&w=1200&auto=format&fit=crop"
+          alt="Prestasi Robotik">
+          <div class="card-content">
+            <h3>Juara 1 Robotik Nasional</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop"
+          alt="Prestasi Basket">
+          <div class="card-content">
+            <h3>Juara Basket Kota</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1496317899792-9d7dbcd928a1?q=80&w=1200&auto=format&fit=crop"
+          alt="Sekolah Favorit">
+          <div class="card-content">
+            <h3>Sekolah Favorit 2026</h3>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+          alt="Prestasi IT">
+          <div class="card-content">
+            <h3>Juara Olimpiade IT</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="next-btn">
+        <button onclick="nextPage()">
+          Kembali ke Awal ▶
+        </button>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+      © 2026 FINZ SCHOOL
+    </footer>
+
+  </div>
+
+</div>
+
+<script>
+
+const adminPassword = "admin123";
+const userPassword = "user123";
+
+function login(){
+
+  let role =
+  document.getElementById("role").value;
+
+  let password =
+  document.getElementById("password").value;
+
+  if(role === "admin" &&
+  password === adminPassword){
+
+    document.getElementById("loginPage")
+    .style.display = "none";
+
+    document.getElementById("website")
+    .style.display = "block";
+
+  }
+
+  else if(role === "user" &&
+  password === userPassword){
+
+    document.getElementById("loginPage")
+    .style.display = "none";
+
+    document.getElementById("website")
+    .style.display = "block";
+
+  }
+
+  else{
+
+    alert("Password salah!");
+
+  }
+
+}
+
+/* PAGE */
+
+let currentPage = 0;
+
+const pages =
+document.querySelectorAll(".page");
+
+function showPage(index){
+
+  pages.forEach((page)=>{
+    page.classList.remove("active");
+  });
+
+  pages[index].classList.add("active");
+
+  currentPage = index;
+
+}
+
+function nextPage(){
+
+  currentPage++;
+
+  if(currentPage >= pages.length){
+    currentPage = 0;
+  }
+
+  showPage(currentPage);
+
+}
+
+/* LOGOUT */
+
+function logout(){
+
+  document.getElementById("website")
+  .style.display = "none";
+
+  document.getElementById("loginPage")
+  .style.display = "flex";
+
+}
+
+</script>
+
+</body>
+</html>
